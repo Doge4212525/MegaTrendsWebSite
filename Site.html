@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Doge B.D.A MegaTrends</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text-container {
+      display: none;
+    }
+
+    .show-text .text-container {
+      display: block;
+    }
+
+    .text-container p {
+      font-size: 30px;
+      animation: showText 5s linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes showText {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .blink {
+      animation: blink 0.5s infinite;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    .database-list {
+      overflow: auto;
+      max-height: 200px;
+      width: 80%;
+      background-color: #202020;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+    
+    .database-list li {
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    #database-button {
+      display: none;
+    }
+  </style>
+</head>
+
+<div id="response-log"></div>
+
+<body>
+  <h1 class="blink">Power On</h1>
+  <div class="text-container">
+    <p>MegaTrends</p>
+    <img src="C:\Users\barki\Downloads\Doge.png" alt="Logo">
+  </div>
+
+  <button id="database-button" onclick="showDatabase()">Database</button>
+  
+  <ul id="database-list" class="database-list"></ul>
+
+  <script>
+    setTimeout(showText, 3000);
+
+    function showText() {
+      document.body.classList.add('show-text');
+      document.getElementById('database-button').style.display = 'block';
+    }
+    
+    function showDatabase() {
+      var textContainer = document.querySelector('.text-container');
+      var databaseButton = document.getElementById('database-button');
+      var databaseList = document.getElementById('database-list');
+
+      textContainer.style.display = 'none';
+      databaseButton.style.display = 'none';
+      databaseList.style.display = 'block';
+      
+      // Simulating dynamic database list
+      var dynamicData = ['5.01.2024 20.56: System Test Complated.', '5.01.2024 17.22: DNS Targetting Error', '3.01.2024 9.43: New Version', '5.01.2024 19.36: Grabbed IP', 'Bot In Wait.'];
+      dynamicData.forEach(function(entry) {
+        var listItem = document.createElement('li');
+        listItem.textContent = entry;
+        databaseList.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+
+</html>
